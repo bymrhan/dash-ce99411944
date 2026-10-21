@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>StreamOps</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <main id="lock" class="lock" hidden>
+    <form id="unlock" class="panel lock-box" autocomplete="off">
+      <div class="brand"><span class="logo"></span>StreamOps</div>
+      <p class="sub">Veriler bu tarayıcıda çözülür; parola hiçbir yere gönderilmez.</p>
+      <label for="password">Ana parola</label>
+      <input id="password" type="password" autocomplete="current-password" required autofocus>
+      <label class="check"><input id="remember" type="checkbox"> Bu cihazda hatırla</label>
+      <p class="sub hint">İşaretlenmezse anahtar yalnızca bu oturum boyunca tutulur ve sekme kapanınca silinir.</p>
+      <p id="lock-error" class="bad" role="alert" hidden></p>
+      <button id="unlock-btn" class="btn primary" type="submit">Kilidi aç</button>
+    </form>
+  </main>
+
+  <main id="app" hidden>
+    <header class="page-head">
+      <div>
+        <h1>Hesaplar</h1>
+        <p id="meta" class="sub"></p>
+      </div>
+      <div class="actions">
+        <button id="refresh" class="btn" type="button">Yenile</button>
+        <button id="lock-btn" class="btn" type="button">Kilitle</button>
+      </div>
+    </header>
+    <p id="stale" class="banner" hidden></p>
+    <div id="cards" class="cards"></div>
+    <nav id="navigation" class="actions" aria-label="Panel bölümleri"></nav>
+    <section id="dashboard-section" hidden></section>
+    <section id="account-section">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Ara: ad, sunucu, kullanıcı, not…" autocomplete="off">
+      <select id="group" aria-label="Grup"></select>
+    </div>
+    <div class="panel table-wrap">
+      <table>
+        <thead><tr id="head"></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="empty" class="empty" hidden>Bu filtreyle eşleşen hesap yok.</div>
+      <div id="more" class="empty" hidden><button id="more-btn" class="btn" type="button"></button></div>
+    </div>
+    </section>
+  </main>
+
+  <dialog id="detail" class="modal"><div id="detail-body"></div></dialog>
+  <div id="toasts" class="toasts"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
